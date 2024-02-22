@@ -6,7 +6,7 @@
           <td class="text-center" style="width: 1px;"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', $(this).prop('checked'));" class="form-check-input"/></td>
           <td class="text-center">{{ column_image }}</td>
           <td class="text-start"><a href="{{ sort_name }}"{% if sort == 'pd.name' %} class="{{ order|lower }}"{% endif %}>{{ column_name }}</a></td>
-          {# added category sort #}
+          {# added category sorting #}
           <td class="text-start"><a href="{{ sort_category }}"{% if sort == 'cd.name' %} class="{{ order|lower }}"{% endif %}>{{ column_category }}</a></td>
           <td class="text-start d-none d-lg-table-cell"><a href="{{ sort_model }}"{% if sort == 'p.model' %} class="{{ order|lower }}"{% endif %}>{{ column_model }}</a></td>
           <td class="text-end"><a href="{{ sort_price }}"{% if sort == 'p.price' %} class="{{ order|lower }}"{% endif %}>{{ column_price }}</a></td>
