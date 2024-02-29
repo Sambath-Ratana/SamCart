@@ -1126,15 +1126,15 @@ class Product extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		foreach ($this->request->post['product_description'] as $language_id => $value) {
-			if ((oc_strlen(trim($value['name'])) < 1) || (oc_strlen($value['name']) > 255)) {
-				$json['error']['name_' . $language_id] = $this->language->get('error_name');
-			}
+		// foreach ($this->request->post['product_description'] as $language_id => $value) {
+		// 	if ((oc_strlen(trim($value['name'])) < 1) || (oc_strlen($value['name']) > 255)) {
+		// 		$json['error']['name_' . $language_id] = $this->language->get('error_name');
+		// 	}
 
-			// if ((oc_strlen(trim($value['meta_title'])) < 1) || (oc_strlen($value['meta_title']) > 255)) {
-			// 	$json['error']['meta_title_' . $language_id] = $this->language->get('error_meta_title');
-			// }
-		}
+		// 	if ((oc_strlen(trim($value['meta_title'])) < 1) || (oc_strlen($value['meta_title']) > 255)) {
+		// 		$json['error']['meta_title_' . $language_id] = $this->language->get('error_meta_title');
+		// 	}
+		// }
 
 		if ((oc_strlen($this->request->post['model']) < 1) || (oc_strlen($this->request->post['model']) > 64)) {
 			$json['error']['model'] = $this->language->get('error_model');
