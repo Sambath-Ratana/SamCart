@@ -182,7 +182,7 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			}
 
 			// Extension
-			$marketplace = [];
+			// $marketplace = [];
 
 			// if ($this->user->hasPermission('access', 'marketplace/marketplace')) {
 			// 	$marketplace[] = [
