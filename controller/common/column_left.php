@@ -171,131 +171,131 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				];
 			}
 			// Still in development
-			//if ($cms) {
-			//	$data['menus'][] = [
-			//		'id'       => 'menu-cms',
-			//		'icon'	   => 'fa-regular fa-newspaper',
-			//		'name'	   => $this->language->get('text_cms'),
-			//		'href'     => '',
-			//		'children' => $cms
-			//	];
-			//}
+			if ($cms) {
+				$data['menus'][] = [
+					'id'       => 'menu-cms',
+					'icon'	   => 'fa-regular fa-newspaper',
+					'name'	   => $this->language->get('text_cms'),
+					'href'     => '',
+					'children' => $cms
+				];
+			}
 
 			// Extension
-			$marketplace = [];
+			// $marketplace = [];
 
-			if ($this->user->hasPermission('access', 'marketplace/marketplace')) {
-				$marketplace[] = [
-					'name'	   => $this->language->get('text_marketplace'),
-					'href'     => $this->url->link('marketplace/marketplace', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'marketplace/marketplace')) {
+			// 	$marketplace[] = [
+			// 		'name'	   => $this->language->get('text_marketplace'),
+			// 		'href'     => $this->url->link('marketplace/marketplace', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'marketplace/installer')) {
-				$marketplace[] = [
-					'name'	   => $this->language->get('text_installer'),
-					'href'     => $this->url->link('marketplace/installer', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'marketplace/installer')) {
+			// 	$marketplace[] = [
+			// 		'name'	   => $this->language->get('text_installer'),
+			// 		'href'     => $this->url->link('marketplace/installer', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'marketplace/extension')) {
-				$marketplace[] = [
-					'name'	   => $this->language->get('text_extension'),
-					'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'marketplace/extension')) {
+			// 	$marketplace[] = [
+			// 		'name'	   => $this->language->get('text_extension'),
+			// 		'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'marketplace/startup')) {
-				$marketplace[] = [
-					'name'	   => $this->language->get('text_startup'),
-					'href'     => $this->url->link('marketplace/startup', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'marketplace/startup')) {
+			// 	$marketplace[] = [
+			// 		'name'	   => $this->language->get('text_startup'),
+			// 		'href'     => $this->url->link('marketplace/startup', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'marketplace/event')) {
-				$marketplace[] = [
-					'name'	   => $this->language->get('text_event'),
-					'href'     => $this->url->link('marketplace/event', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'marketplace/event')) {
+			// 	$marketplace[] = [
+			// 		'name'	   => $this->language->get('text_event'),
+			// 		'href'     => $this->url->link('marketplace/event', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'marketplace/cron')) {
-				$marketplace[] = [
-					'name'	   => $this->language->get('text_cron'),
-					'href'     => $this->url->link('marketplace/cron', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'marketplace/cron')) {
+			// 	$marketplace[] = [
+			// 		'name'	   => $this->language->get('text_cron'),
+			// 		'href'     => $this->url->link('marketplace/cron', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($marketplace) {
-				$data['menus'][] = [
-					'id'       => 'menu-extension',
-					'icon'	   => 'fas fa-puzzle-piece',
-					'name'	   => $this->language->get('text_extension'),
-					'href'     => '',
-					'children' => $marketplace
-				];
-			}
+			// if ($marketplace) {
+			// 	$data['menus'][] = [
+			// 		'id'       => 'menu-extension',
+			// 		'icon'	   => 'fas fa-puzzle-piece',
+			// 		'name'	   => $this->language->get('text_extension'),
+			// 		'href'     => '',
+			// 		'children' => $marketplace
+			// 	];
+			// }
 
 			// Design
-			$design = [];
+			// $design = [];
 
-			if ($this->user->hasPermission('access', 'design/layout')) {
-				$design[] = [
-					'name'	   => $this->language->get('text_layout'),
-					'href'     => $this->url->link('design/layout', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'design/layout')) {
+			// 	$design[] = [
+			// 		'name'	   => $this->language->get('text_layout'),
+			// 		'href'     => $this->url->link('design/layout', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'design/theme')) {
-				$design[] = [
-					'name'	   => $this->language->get('text_theme'),
-					'href'     => $this->url->link('design/theme', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'design/theme')) {
+			// 	$design[] = [
+			// 		'name'	   => $this->language->get('text_theme'),
+			// 		'href'     => $this->url->link('design/theme', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'design/translation')) {
-				$design[] = [
-					'name'	   => $this->language->get('text_language_editor'),
-					'href'     => $this->url->link('design/translation', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'design/translation')) {
+			// 	$design[] = [
+			// 		'name'	   => $this->language->get('text_language_editor'),
+			// 		'href'     => $this->url->link('design/translation', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'design/banner')) {
-				$design[] = [
-					'name'	   => $this->language->get('text_banner'),
-					'href'     => $this->url->link('design/banner', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'design/banner')) {
+			// 	$design[] = [
+			// 		'name'	   => $this->language->get('text_banner'),
+			// 		'href'     => $this->url->link('design/banner', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			$seo = [];
+			// $seo = [];
 
-			if ($this->user->hasPermission('access', 'design/seo_url')) {
-				$design[] = [
-					'name'	   => $this->language->get('text_seo_url'),
-					'href'     => $this->url->link('design/seo_url', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'design/seo_url')) {
+			// 	$design[] = [
+			// 		'name'	   => $this->language->get('text_seo_url'),
+			// 		'href'     => $this->url->link('design/seo_url', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($design) {
-				$data['menus'][] = [
-					'id'       => 'menu-design',
-					'icon'	   => 'fas fa-desktop',
-					'name'	   => $this->language->get('text_design'),
-					'href'     => '',
-					'children' => $design
-				];
-			}
+			// if ($design) {
+			// 	$data['menus'][] = [
+			// 		'id'       => 'menu-design',
+			// 		'icon'	   => 'fas fa-desktop',
+			// 		'name'	   => $this->language->get('text_design'),
+			// 		'href'     => '',
+			// 		'children' => $design
+			// 	];
+			// }
 
 			// Sales
 			$sale = [];
@@ -675,58 +675,59 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			}
 
 			// Tools
-			$maintenance = [];
+			// $maintenance = [];
 
-			if ($this->user->hasPermission('access', 'tool/upgrade')) {
-				$maintenance[] = [
-					'name'	   => $this->language->get('text_upgrade'),
-					'href'     => $this->url->link('tool/upgrade', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'tool/upgrade')) {
+			// 	$maintenance[] = [
+			// 		'name'	   => $this->language->get('text_upgrade'),
+			// 		'href'     => $this->url->link('tool/upgrade', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'tool/backup')) {
-				$maintenance[] = [
-					'name'	   => $this->language->get('text_backup'),
-					'href'     => $this->url->link('tool/backup', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'tool/backup')) {
+			// 	$maintenance[] = [
+			// 		'name'	   => $this->language->get('text_backup'),
+			// 		'href'     => $this->url->link('tool/backup', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'tool/upload')) {
-				$maintenance[] = [
-					'name'	   => $this->language->get('text_upload'),
-					'href'     => $this->url->link('tool/upload', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'tool/upload')) {
+			// 	$maintenance[] = [
+			// 		'name'	   => $this->language->get('text_upload'),
+			// 		'href'     => $this->url->link('tool/upload', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($this->user->hasPermission('access', 'tool/log')) {
-				$maintenance[] = [
-					'name'	   => $this->language->get('text_log'),
-					'href'     => $this->url->link('tool/log', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
+			// if ($this->user->hasPermission('access', 'tool/log')) {
+			// 	$maintenance[] = [
+			// 		'name'	   => $this->language->get('text_log'),
+			// 		'href'     => $this->url->link('tool/log', 'user_token=' . $this->session->data['user_token']),
+			// 		'children' => []
+			// 	];
+			// }
 
-			if ($maintenance) {
-				$system[] = [
-					'name'	   => $this->language->get('text_maintenance'),
-					'href'     => '',
-					'children' => $maintenance
-				];
-			}
+			// if ($maintenance) {
+			// 	$system[] = [
+			// 		'name'	   => $this->language->get('text_maintenance'),
+			// 		'href'     => '',
+			// 		'children' => $maintenance
+			// 	];
+			// }
 
-			if ($system) {
-				$data['menus'][] = [
-					'id'       => 'menu-system',
-					'icon'	   => 'fas fa-cog',
-					'name'	   => $this->language->get('text_system'),
-					'href'     => '',
-					'children' => $system
-				];
-			}
+			// if ($system) {
+			// 	$data['menus'][] = [
+			// 		'id'       => 'menu-system',
+			// 		'icon'	   => 'fas fa-cog',
+			// 		'name'	   => $this->language->get('text_system'),
+			// 		'href'     => '',
+			// 		'children' => $system
+			// 	];
+			// }
 
+			//Report
 			$report = [];
 
 			if ($this->user->hasPermission('access', 'report/report')) {
