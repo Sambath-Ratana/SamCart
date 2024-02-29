@@ -1135,6 +1135,7 @@ class Product extends \Opencart\System\Engine\Controller {
 		// 	// 	$json['error']['meta_title_' . $language_id] = $this->language->get('error_meta_title');
 		// 	// }
 		// }
+		
 		if ((oc_strlen($this->request->post['model']) < 1) || (oc_strlen($this->request->post['model']) > 64)) {
 			$json['error']['model'] = $this->language->get('error_model');
 		}
