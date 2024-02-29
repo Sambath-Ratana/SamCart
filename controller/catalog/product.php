@@ -1086,22 +1086,22 @@ class Product extends \Opencart\System\Engine\Controller {
 		}
 
 		// SEO
-		if ($product_id) {
-			$data['product_seo_url'] = $this->model_catalog_product->getSeoUrls($product_id);
-		} else {
-			$data['product_seo_url'] = [];
-		}
+		// if ($product_id) {
+		// 	$data['product_seo_url'] = $this->model_catalog_product->getSeoUrls($product_id);
+		// } else {
+		// 	$data['product_seo_url'] = [];
+		// }
 
 		// Layouts
-		$this->load->model('design/layout');
+		// $this->load->model('design/layout');
 
-		$data['layouts'] = $this->model_design_layout->getLayouts();
+		// $data['layouts'] = $this->model_design_layout->getLayouts();
 
-		if ($product_id) {
-			$data['product_layout'] = $this->model_catalog_product->getLayouts($product_id);
-		} else {
-			$data['product_layout'] = [];
-		}
+		// if ($product_id) {
+		// 	$data['product_layout'] = $this->model_catalog_product->getLayouts($product_id);
+		// } else {
+		// 	$data['product_layout'] = [];
+		// }
 
 		$data['report'] = $this->getReport();
 
@@ -1152,27 +1152,27 @@ class Product extends \Opencart\System\Engine\Controller {
 			}
 		}
 
-		if ($this->request->post['product_seo_url']) {
-			$this->load->model('design/seo_url');
+		// if ($this->request->post['product_seo_url']) {
+		// 	$this->load->model('design/seo_url');
 
-			foreach ($this->request->post['product_seo_url'] as $store_id => $language) {
-				foreach ($language as $language_id => $keyword) {
-					if ((oc_strlen(trim($keyword)) < 1) || (oc_strlen($keyword) > 64)) {
-						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword');
-					}
+		// 	foreach ($this->request->post['product_seo_url'] as $store_id => $language) {
+		// 		foreach ($language as $language_id => $keyword) {
+		// 			if ((oc_strlen(trim($keyword)) < 1) || (oc_strlen($keyword) > 64)) {
+		// 				$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword');
+		// 			}
 
-					if (preg_match('/[^a-zA-Z0-9\/_-]|[\p{Cyrillic}]+/u', $keyword)) {
-						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword_character');
-					}
+		// 			if (preg_match('/[^a-zA-Z0-9\/_-]|[\p{Cyrillic}]+/u', $keyword)) {
+		// 				$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword_character');
+		// 			}
 
-					$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($keyword, $store_id);
+		// 			$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($keyword, $store_id);
 
-					if ($seo_url_info && ($seo_url_info['key'] != 'product_id' || !isset($this->request->post['product_id']) || $seo_url_info['value'] != (int)$this->request->post['product_id'])) {
-						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword_exists');
-					}
-				}
-			}
-		}
+		// 			if ($seo_url_info && ($seo_url_info['key'] != 'product_id' || !isset($this->request->post['product_id']) || $seo_url_info['value'] != (int)$this->request->post['product_id'])) {
+		// 				$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword_exists');
+		// 			}
+		// 		}
+		// 	}
+		// }
 
 		if (isset($json['error']) && !isset($json['error']['warning'])) {
 			$json['error']['warning'] = $this->language->get('error_warning');
