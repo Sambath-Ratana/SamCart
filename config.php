@@ -3,17 +3,17 @@
 define('APPLICATION', 'Admin');
 
 // HTTP
-define('HTTP_SERVER', 'http://localhost/opencart/samstore/');
-define('HTTP_CATALOG', 'http://localhost/opencart/');
+define('HTTP_SERVER', 'http://localhost/newinstall/admin/');
+define('HTTP_CATALOG', 'http://localhost/newinstall/');
 
 // DIR
-define('DIR_OPENCART', 'D:/XAMP/htdocs/opencart/');
-define('DIR_APPLICATION', DIR_OPENCART . 'samstore/');
+define('DIR_OPENCART', 'D:/XAMP/htdocs/newinstall/');
+define('DIR_APPLICATION', DIR_OPENCART . 'admin/');
 define('DIR_EXTENSION', DIR_OPENCART . 'extension/');
 define('DIR_IMAGE', DIR_OPENCART . 'image/');
 define('DIR_SYSTEM', DIR_OPENCART . 'system/');
 define('DIR_CATALOG', DIR_OPENCART . 'catalog/');
-define('DIR_STORAGE', 'D:/XAMP/storage/');
+define('DIR_STORAGE', DIR_SYSTEM . 'storage/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/template/');
 define('DIR_CONFIG', DIR_SYSTEM . 'config/');
@@ -28,7 +28,7 @@ define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_DATABASE', 'opencartstore');
+define('DB_DATABASE', 'newinstall');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');
 
