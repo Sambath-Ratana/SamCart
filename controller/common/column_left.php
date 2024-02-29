@@ -717,15 +717,15 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			// 	];
 			// }
 
-			// if ($system) {
-			// 	$data['menus'][] = [
-			// 		'id'       => 'menu-system',
-			// 		'icon'	   => 'fas fa-cog',
-			// 		'name'	   => $this->language->get('text_system'),
-			// 		'href'     => '',
-			// 		'children' => $system
-			// 	];
-			// }
+			if ($system) {
+				$data['menus'][] = [
+					'id'       => 'menu-system',
+					'icon'	   => 'fas fa-cog',
+					'name'	   => $this->language->get('text_system'),
+					'href'     => '',
+					'children' => $system
+				];
+			}
 
 			//Report
 			$report = [];
