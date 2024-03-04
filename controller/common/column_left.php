@@ -360,6 +360,16 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 					'children' => $sale
 				];
 			}
+			// Consignment
+			$consignment = [];
+			
+			if ($this->user->hasPermission('access', 'catalog/product')) {
+				$catalog[] = [
+					'name'	   => $this->language->get('text_product'),
+					'href'     => $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token']),
+					'children' => []
+				];
+			}
 
 			// Customer
 			$customer = [];
@@ -414,6 +424,7 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				];
 			}
 
+		
 			// Marketing
 			$marketing = [];
 
