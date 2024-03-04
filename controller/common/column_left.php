@@ -297,6 +297,53 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			// 	];
 			// }
 
+			//Consignment
+			
+			$consignment = [];
+			//change added inbox
+			$inbox = [];
+			if ($this->user->hasPermission('access', 'sale/order')) {
+				$inbox[] = [
+					'name'	   => $this->language->get('text_inbox'),
+					'href'     => '',
+					'children' => []
+				];
+			}
+			//change added outbox
+			$outbox = [];
+			if ($this->user->hasPermission('access', 'sale/order')) {
+				$inbox[] = [
+					'name'	   => $this->language->get('text_outbox'),
+					'href'     => '',
+					'children' => []
+				];
+			}
+			if ($this->user->hasPermission('access', 'sale/order')) {
+				$consignment[] = [
+					'name'	   => $this->language->get('text_consignor'),
+					'href'     => '',
+					'children' => $inbox
+				];
+			}
+			if ($this->user->hasPermission('access', 'sale/order')) {
+				$consignment[] = [
+					'name'	   => $this->language->get('text_consignee'),
+					'href'     => '',
+					'children' => $inbox
+				];
+			}
+			
+			if ($consignment) {
+				$data['menus'][] = [
+					'id'       => 'menu-consignment',
+					'icon'	   => 'fas fa-user',
+					'name'	   => $this->language->get('text_consignment'),
+					'href'     => '',
+					'children' => $consignment
+				];
+			}
+
+
 			// Sales
 			$sale = [];
 
@@ -360,17 +407,7 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 					'children' => $sale
 				];
 			}
-			// Consignment
-			$consignment = [];
 			
-			if ($this->user->hasPermission('access', 'catalog/product')) {
-				$catalog[] = [
-					'name'	   => $this->language->get('text_product'),
-					'href'     => $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token']),
-					'children' => []
-				];
-			}
-
 			// Customer
 			$customer = [];
 

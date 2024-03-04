@@ -20,6 +20,10 @@ $_['text_coupon']              = 'Coupons';
 $_['text_cron']                = 'Cron Jobs';
 $_['text_currency']            = 'Currencies';
 $_['text_customer']            = 'Customers';
+//Change Added: text_consignment, text_consignee, text_consignor
+$_['text_consignment']         = 'Consignment';
+$_['text_consignor']           = 'Consignor';
+$_['text_consignee']           = 'Consignee';
 $_['text_customer_approval']   = 'Customer Approvals';
 $_['text_customer_group']      = 'Customer Groups';
 $_['text_customer_online']     = 'Customer Online';
@@ -85,3 +89,6 @@ $_['text_zone']                = 'Zones';
 $_['text_complete_status']     = 'Orders Completed';
 $_['text_processing_status']   = 'Orders Processing';
 $_['text_other_status']        = 'Other Statuses';
+//Change added text_inbox and text outbox
+$_['text_inbox']               = 'Inbox';
+$_['text_outbox']              = 'Outbox';
