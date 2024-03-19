@@ -302,10 +302,10 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			$consignment = [];
 			//change added inbox
 			$inbox = [];
-			if ($this->user->hasPermission('access', 'catalog/product')) {
+			if ($this->user->hasPermission('access', 'catalog/consignee')) {
 				$inbox[] = [
 					'name'	   => $this->language->get('text_inbox'),
-					'href'     => $this->url->link('catalog/consignment', 'user_token=' . $this->session->data['user_token']),
+					'href'     => $this->url->link('catalog/consignee', 'user_token=' . $this->session->data['user_token']),
 					'children' => []
 				];
 			}
