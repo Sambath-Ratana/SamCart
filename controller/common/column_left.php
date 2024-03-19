@@ -181,7 +181,7 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			//	];
 			//}
 
-			// Extension
+			//Extension
 			// $marketplace = [];
 
 			// if ($this->user->hasPermission('access', 'marketplace/marketplace')) {
@@ -302,10 +302,10 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			$consignment = [];
 			//change added inbox
 			$inbox = [];
-			if ($this->user->hasPermission('access', 'sale/order')) {
+			if ($this->user->hasPermission('access', 'catalog/product')) {
 				$inbox[] = [
 					'name'	   => $this->language->get('text_inbox'),
-					'href'     => '',
+					'href'     => $this->url->link('catalog/consignment', 'user_token=' . $this->session->data['user_token']),
 					'children' => []
 				];
 			}
