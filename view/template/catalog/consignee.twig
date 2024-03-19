@@ -112,7 +112,7 @@ $('#button-filter').on('click', function () {
     var filter_category = $('#input-category').val();
 
     if (filter_category !== '') {
-        url += '&filter_category=' + filter_category;
+        url += '&filter_category=' + encodeURIComponent(filter_category);
     }
 
     window.history.pushState({}, null, 'index.php?route=catalog/product&user_token={{ user_token }}' + url);

@@ -220,8 +220,9 @@ class Product extends \Opencart\System\Engine\Controller {
 		//added this
 		if (isset($this->request->get['filter_category'])) {
 			$url .= '&filter_category=' . urlencode(html_entity_decode($this->request->get['filter_category'], ENT_QUOTES, 'UTF-8'));
+			
 		}
-
+		
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
@@ -1377,13 +1378,18 @@ class Product extends \Opencart\System\Engine\Controller {
 			'start'        => 0,
 			'limit'        => $limit
 		];
-
+		$filter_anotherData = [
+			'start' => 0,
+			'limit' => 5
+		];
 		$this->load->model('catalog/product');
 		$this->load->model('catalog/option');
 		$this->load->model('catalog/subscription_plan');
 		$this->load->model('catalog/category');
 
 		$results = $this->model_catalog_product->getProducts($filter_data);
+		// $categories = $this->model_catalog_category->getCategories($filter_anotherData);
+
 
 		foreach ($results as $result) {
 
@@ -1437,12 +1443,13 @@ class Product extends \Opencart\System\Engine\Controller {
 					];
 				}
 			}
-
 			$json[] = [
 				'product_id'   => $result['product_id'],
 				'name'         => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')),
 				'model'        => $result['model'],
-				'category'     => implode(', ', array_unique(explode(', ', $result['category']))), //added this to display the column
+				// 'category'     => implode(', ', array_unique(explode(', ', $result['category']))),
+				'category'     => $result['category'], //added this to display the column
+				// 'category' 	   => $categories,
 				'option'       => $option_data,
 				'subscription' => $subscription_data,
 				'price'        => $result['price']

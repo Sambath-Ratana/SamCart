@@ -5,7 +5,7 @@ namespace Opencart\Admin\Controller\Catalog;
  *
  * @package Opencart\Admin\Controller\Catalog
  */
-class Product extends \Opencart\System\Engine\Controller {
+class Consignee extends \Opencart\System\Engine\Controller {
 	/**
 	 * @return void
 	 */
