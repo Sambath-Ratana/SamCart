@@ -323,14 +323,14 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				$consignment[] = [
 					'name'	   => $this->language->get('text_consignor'),
 					'href'     => '',
-					'children' => $consignor
+					'children' => $consignee
 				];
 			}
 			if ($this->user->hasPermission('access', 'sale/order')) {
 				$consignment[] = [
 					'name'	   => $this->language->get('text_consignee'),
 					'href'     => '',
-					'children' => $consignee
+					'children' => $consignor
 				];
 			}
 			

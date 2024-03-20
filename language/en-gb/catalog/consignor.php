@@ -3,9 +3,10 @@
 $_['heading_title']           = 'Consignor';
 
 // Text
+$_['text_consignor']               = 'Consignor';
 $_['text_success']            = 'Success: You have modified products!';
 $_['text_variant']            = 'Please note because this is a variant product you must override the <a href="%s" target="_blank" class="alert-link">master product</a> data. Otherwise the data will get replaced with the <a href="%s" target="_blank" class="alert-link">master product</a> data when saved.';
-$_['text_list']               = 'Product List';
+$_['text_list']               = 'Consignor List';
 $_['text_add']                = 'Add Product';
 $_['text_edit']               = 'Edit Product';
 $_['text_variant_add']        = 'Add Variant';
@@ -35,21 +36,14 @@ $_['text_points']             = 'Reward Points';
 $_['text_report']             = 'Reports';
 
 // Column
-$_['column_name']             = 'Product Name';
-$_['column_model']            = 'Model';
-$_['column_image']            = 'Image';
-$_['column_price']            = 'Price';
-$_['column_quantity']         = 'Quantity';
-$_['column_status']           = 'Status';
-$_['column_ip']               = 'IP';
-$_['column_store']            = 'Store';
-$_['column_country']          = 'Country';
-$_['column_date_added']       = 'Date Added';
-$_['column_action']           = 'Action';
-$_['column_category']         = 'Product Category';
+$_['column_image']             = 'Image';
+$_['column_vendor']            = 'Vendor';
+$_['column_description']       = 'Description';
+$_['column_action']            = 'Action';
 
 // Entry
-$_['entry_name']              = 'Product Name';
+$_['entry_vendor']            = 'Vendor Name';
+
 $_['entry_description']       = 'Description';
 $_['entry_meta_title']        = 'Meta Tag Title';
 $_['entry_meta_keyword']      = 'Meta Tag Keywords';
