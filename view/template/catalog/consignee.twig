@@ -114,6 +114,7 @@ $('#button-filter').on('click', function () {
     if (filter_category !== '') {
         url += '&filter_category=' + encodeURIComponent(filter_category);
     }
+
     window.history.pushState({}, null, 'index.php?route=catalog/product&user_token={{ user_token }}' + url);
 
     $('#product').load('index.php?route=catalog/product.list&user_token={{ user_token }}' + url);
@@ -167,6 +168,7 @@ $('#input-category').autocomplete({
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
+                    console.log(json);
                     return {
                         label: item['category'],
                         value: item['product_id']

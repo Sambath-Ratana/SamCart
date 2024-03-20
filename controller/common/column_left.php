@@ -171,17 +171,17 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				];
 			}
 			// Still in development
-			if ($cms) {
-				$data['menus'][] = [
-					'id'       => 'menu-cms',
-					'icon'	   => 'fa-regular fa-newspaper',
-					'name'	   => $this->language->get('text_cms'),
-					'href'     => '',
-					'children' => $cms
-				];
-			}
+			//if ($cms) {
+			//	$data['menus'][] = [
+			//		'id'       => 'menu-cms',
+			//		'icon'	   => 'fa-regular fa-newspaper',
+			//		'name'	   => $this->language->get('text_cms'),
+			//		'href'     => '',
+			//		'children' => $cms
+			//	];
+			//}
 
-			// Extension
+			//Extension
 			// $marketplace = [];
 
 			// if ($this->user->hasPermission('access', 'marketplace/marketplace')) {
@@ -297,6 +297,53 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			// 	];
 			// }
 
+			//Consignment
+			
+			$consignment = [];
+			//change added inbox
+			$inbox = [];
+			if ($this->user->hasPermission('access', 'catalog/consignee')) {
+				$inbox[] = [
+					'name'	   => $this->language->get('text_inbox'),
+					'href'     => $this->url->link('catalog/consignee', 'user_token=' . $this->session->data['user_token']),
+					'children' => []
+				];
+			}
+			//change added outbox
+			$outbox = [];
+			if ($this->user->hasPermission('access', 'sale/order')) {
+				$inbox[] = [
+					'name'	   => $this->language->get('text_outbox'),
+					'href'     => '',
+					'children' => []
+				];
+			}
+			if ($this->user->hasPermission('access', 'sale/order')) {
+				$consignment[] = [
+					'name'	   => $this->language->get('text_consignor'),
+					'href'     => '',
+					'children' => $inbox
+				];
+			}
+			if ($this->user->hasPermission('access', 'sale/order')) {
+				$consignment[] = [
+					'name'	   => $this->language->get('text_consignee'),
+					'href'     => '',
+					'children' => $inbox
+				];
+			}
+			
+			if ($consignment) {
+				$data['menus'][] = [
+					'id'       => 'menu-consignment',
+					'icon'	   => 'fas fa-user',
+					'name'	   => $this->language->get('text_consignment'),
+					'href'     => '',
+					'children' => $consignment
+				];
+			}
+
+
 			// Sales
 			$sale = [];
 
@@ -360,7 +407,7 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 					'children' => $sale
 				];
 			}
-
+			
 			// Customer
 			$customer = [];
 
@@ -414,6 +461,7 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				];
 			}
 
+		
 			// Marketing
 			$marketing = [];
 
@@ -727,7 +775,6 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				];
 			}
 
-			//Report
 			$report = [];
 
 			if ($this->user->hasPermission('access', 'report/report')) {
