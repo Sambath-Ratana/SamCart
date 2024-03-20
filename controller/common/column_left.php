@@ -301,35 +301,36 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			
 			$consignment = [];
 			//change added inbox
-			$inbox = [];
+			$consignor = [];
 			if ($this->user->hasPermission('access', 'catalog/consignee')) {
-				$inbox[] = [
-					'name'	   => $this->language->get('text_inbox'),
+				$consignor[] = [
+					'name'	   => $this->language->get('Consignors'),
 					'href'     => $this->url->link('catalog/consignee', 'user_token=' . $this->session->data['user_token']),
 					'children' => []
 				];
 			}
 			//change added outbox
-			$outbox = [];
-			if ($this->user->hasPermission('access', 'sale/order')) {
-				$inbox[] = [
-					'name'	   => $this->language->get('text_outbox'),
-					'href'     => '',
+			$consignee = [];
+			if ($this->user->hasPermission('access', 'catalog/consignor')) {
+				$consignee[] = [
+					'name'	   => $this->language->get('Consignees'),
+					'href'     => $this->url->link('catalog/consignor', 'user_token=' . $this->session->data['user_token']),
 					'children' => []
 				];
 			}
+			// Potential problem with permission consignor/consignee accessing their counterparts
 			if ($this->user->hasPermission('access', 'sale/order')) {
 				$consignment[] = [
 					'name'	   => $this->language->get('text_consignor'),
 					'href'     => '',
-					'children' => $inbox
+					'children' => $consignor
 				];
 			}
 			if ($this->user->hasPermission('access', 'sale/order')) {
 				$consignment[] = [
 					'name'	   => $this->language->get('text_consignee'),
 					'href'     => '',
-					'children' => $inbox
+					'children' => $consignee
 				];
 			}
 			
