@@ -10,7 +10,7 @@ class Consignee extends \Opencart\System\Engine\Controller {
 	 * @return void
 	 */
 	public function index(): void {
-		$this->load->language('catalog/product');
+		$this->load->language('catalog/consignee');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -124,14 +124,14 @@ class Consignee extends \Opencart\System\Engine\Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/product', $data));
+		$this->response->setOutput($this->load->view('catalog/consignee', $data));
 	}
 
 	/**
 	 * @return void
 	 */
 	public function list(): void {
-		$this->load->language('catalog/product');
+		$this->load->language('catalog/consignee');
 
 		$this->response->setOutput($this->getList());
 	}
@@ -180,7 +180,7 @@ class Consignee extends \Opencart\System\Engine\Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = (string)$this->request->get['sort'];
 		} else {
-			$sort = 'pd.name';
+			$sort = 'pd.vendor';
 		}
 
 		if (isset($this->request->get['order'])) {
@@ -331,13 +331,7 @@ class Consignee extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		$data['sort_name'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=pd.name' . $url);
-		$data['sort_model'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.model' . $url);
-		$data['sort_price'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.price' . $url);
-		$data['sort_quantity'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.quantity' . $url);
-		$data['sort_order'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.sort_order' . $url);
-		//added this sort category
-		$data['sort_category'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=cd.name' . $url);
+		$data['sort_vendor'] = $this->url->link('catalog/consignee.list', 'user_token=' . $this->session->data['user_token'] . '&sort=pd.vendor' . $url);
 
 		$url = '';
 
@@ -386,14 +380,14 @@ class Consignee extends \Opencart\System\Engine\Controller {
 		$data['sort'] = $sort;
 		$data['order'] = $order;
 
-		return $this->load->view('catalog/product_list', $data);
+		return $this->load->view('catalog/consignee_list', $data);
 	}
 
 	/**
 	 * @return void
 	 */
 	public function form(): void {
-		$this->load->language('catalog/product');
+		$this->load->language('catalog/consignee');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -1118,11 +1112,11 @@ class Consignee extends \Opencart\System\Engine\Controller {
 	 * @return void
 	 */
 	public function save(): void {
-		$this->load->language('catalog/product');
+		$this->load->language('catalog/consignee');
 
 		$json = [];
 
-		if (!$this->user->hasPermission('modify', 'catalog/product')) {
+		if (!$this->user->hasPermission('modify', 'catalog/consignee')) {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
@@ -1211,7 +1205,7 @@ class Consignee extends \Opencart\System\Engine\Controller {
 	 * @return void
 	 */
 	public function delete(): void {
-		$this->load->language('catalog/product');
+		$this->load->language('catalog/consignee');
 
 		$json = [];
 
@@ -1243,7 +1237,7 @@ class Consignee extends \Opencart\System\Engine\Controller {
 	 * @return void
 	 */
 	public function copy(): void {
-		$this->load->language('catalog/product');
+		$this->load->language('catalog/consignee');
 
 		$json = [];
 
@@ -1275,7 +1269,7 @@ class Consignee extends \Opencart\System\Engine\Controller {
 	 * @return void
 	 */
 	public function report(): void {
-		$this->load->language('catalog/product');
+		$this->load->language('catalog/consignee');
 
 		$this->response->setOutput($this->getReport());
 	}

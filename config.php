@@ -3,11 +3,11 @@
 define('APPLICATION', 'Admin');
 
 // HTTP
-define('HTTP_SERVER', 'http://localhost/newinstall/admin/');
-define('HTTP_CATALOG', 'http://localhost/newinstall/');
+define('HTTP_SERVER', 'http://localhost/fusecart/admin/');
+define('HTTP_CATALOG', 'http://localhost/fusecart/');
 
 // DIR
-define('DIR_OPENCART', 'D:/XAMP/htdocs/newinstall/');
+define('DIR_OPENCART', 'C:/xampp/htdocs/fusecart/');
 define('DIR_APPLICATION', DIR_OPENCART . 'admin/');
 define('DIR_EXTENSION', DIR_OPENCART . 'extension/');
 define('DIR_IMAGE', DIR_OPENCART . 'image/');
@@ -28,7 +28,7 @@ define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_DATABASE', 'newinstall');
+define('DB_DATABASE', 'fusecart');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');
 

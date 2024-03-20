@@ -1,16 +1,12 @@
-<form id="form-product" method="post" data-oc-toggle="ajax" data-oc-load="{{ action }}" data-oc-target="#product">
+<form id="form-product" method="post" data-oc-toggle="ajax" data-oc-load="{{ action }}" data-oc-target="#consignee">
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <td class="text-center" style="width: 1px;"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', $(this).prop('checked'));" class="form-check-input"/></td>
           <td class="text-center">{{ column_image }}</td>
-          <td class="text-start"><a href="{{ sort_name }}"{% if sort == 'pd.name' %} class="{{ order|lower }}"{% endif %}>{{ column_name }}</a></td>
-          {# added category sorting #}
-          <td class="text-start"><a href="{{ sort_category }}"{% if sort == 'cd.name' %} class="{{ order|lower }}"{% endif %}>{{ column_category }}</a></td>
-          <td class="text-start d-none d-lg-table-cell"><a href="{{ sort_model }}"{% if sort == 'p.model' %} class="{{ order|lower }}"{% endif %}>{{ column_model }}</a></td>
-          <td class="text-end"><a href="{{ sort_price }}"{% if sort == 'p.price' %} class="{{ order|lower }}"{% endif %}>{{ column_price }}</a></td>
-          <td class="text-end"><a href="{{ sort_quantity }}"{% if sort == 'p.quantity' %} class="{{ order|lower }}"{% endif %}>{{ column_quantity }}</a></td>
+          <td class="text-start"><a href="{{ sort_vendor }}">{{ column_vendor }}</a></td>
+          <td class="text-start">{{ column_description }}</td>
           <td class="text-end">{{ column_action }}</td>
         </tr>
       </thead>
@@ -30,23 +26,6 @@
               </td>
 
               <td class="text-start">{{ product.categories }}</td>
-
-              <td class="text-start d-none d-lg-table-cell">{{ product.model }}</td>
-              <td class="text-end">
-                {% if product.special %}<span style="text-decoration: line-through;">{{ product.price }}</span>
-                  <br/>
-                  <div class="text-danger">{{ product.special }}</div>
-                {% else %}
-                  {{ product.price }}
-                {% endif %}</td>
-              <td class="text-end">
-                {% if product.quantity <= 0 %}
-                  <span class="badge bg-warning">{{ product.quantity }}</span>
-                {% elseif product.quantity <= 5 %}
-                  <span class="badge bg-danger">{{ product.quantity }}</span>
-                {% else %}
-                  <span class="badge bg-success">{{ product.quantity }}</span>
-                {% endif %}</td>
               <td class="text-end">
                 {% if product.variant %}
                   <div class="btn-group">
