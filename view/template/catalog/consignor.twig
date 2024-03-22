@@ -18,39 +18,14 @@
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div id="filter-product" class="col-lg-3 col-md-12 order-lg-last d-none d-lg-block mb-3">
+      <div id="filter-consignee" class="col-lg-3 col-md-12 order-lg-last d-none d-lg-block mb-3">
         <div class="card">
           <div class="card-header"><i class="fa-solid fa-filter"></i> {{ text_filter }}</div>
           <div class="card-body">
             <div class="mb-3">
-              <label for="input-name" class="form-label">{{ entry_name }}</label>
-              <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" data-oc-target="autocomplete-name" class="form-control" autocomplete="off"/>
-              <ul id="autocomplete-name" class="dropdown-menu"></ul>
-            </div>
-            <div class="mb-3">
-              <label for="input-model" class="form-label">{{ entry_model }}</label>
-              <input type="text" name="filter_model" value="{{ filter_model }}" placeholder="{{ entry_model }}" id="input-model" data-oc-target="autocomplete-model" class="form-control" autocomplete="off"/>
-              <ul id="autocomplete-model" class="dropdown-menu"></ul>
-            </div>
-            <div class="mb-3">
-              <label for="input-price" class="form-label">{{ entry_price }}</label> <input type="text" name="filter_price" value="{{ filter_price }}" placeholder="{{ entry_price }}" id="input-price" class="form-control"/>
-            </div>
-            <div class="mb-3">
-              <label for="input-quantity" class="form-label">{{ entry_quantity }}</label> <input type="text" name="filter_quantity" value="{{ filter_quantity }}" placeholder="{{ entry_quantity }}" id="input-quantity" class="form-control"/>
-            </div>
-            <div class="mb-3">
-              <label for="input-status" class="form-label">{{ entry_status }}</label> <select name="filter_status" id="input-status" class="form-select">
-                <option value=""></option>
-                <option value="1"{% if filter_status == '1' %} selected{% endif %}>{{ text_enabled }}</option>
-                <option value="0"{% if filter_status == '0' %} selected{% endif %}>{{ text_disabled }}</option>
-              </select>
-            </div>
-
-            {# Category filter #}
-            <div class="mb-3">
-              <label for="input-category" class="form-label">{{ entry_category }}</label>
-              <input type="text" name="filter_category" value="{{ filter_category }}" placeholder="{{ entry_category }}" id="input-category" data-oc-target="autocomplete-category" class="form-control" autocomplete="off"/>
-              <ul id="autocomplete-category" class="dropdown-menu"></ul>
+              <label for="input-vendor" class="form-label">{{ entry_vendor }}</label>
+              <input type="text" name="filter_vendor" value="{{ filter_vendor }}" placeholder="{{ entry_vendor }}" id="input-vendor" data-oc-target="autocomplete-vendor" class="form-control" autocomplete="off"/>
+              <ul id="autocomplete-vendor" class="dropdown-menu"></ul>
             </div>
 
             <div class="text-end">
@@ -62,14 +37,14 @@
       <div class="col col-lg-9 col-md-12">
         <div class="card">
           <div class="card-header"><i class="fa-solid fa-list"></i> {{ text_list }}</div>
-          <div id="product" class="card-body">{{ list }}</div>
+          <div id="consignee" class="card-body">{{ list }}</div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <script type="text/javascript"><!--
-$('#product').on('click', 'thead a, .pagination a', function (e) {
+$('#consignor').on('click', 'thead a, .pagination a', function (e) {
     e.preventDefault();
 
     $('#product').load(this.href);
@@ -84,42 +59,12 @@ $('#button-filter').on('click', function () {
         url += '&filter_name=' + encodeURIComponent(filter_name);
     }
 
-    var filter_model = $('#input-model').val();
+    window.history.pushState({}, null, 'index.php?route=catalog/consignor&user_token={{ user_token }}' + url);
 
-    if (filter_model) {
-        url += '&filter_model=' + encodeURIComponent(filter_model);
-    }
-
-    var filter_price = $('#input-price').val();
-
-    if (filter_price) {
-        url += '&filter_price=' + encodeURIComponent(filter_price);
-    }
-
-    var filter_quantity = $('#input-quantity').val();
-
-    if (filter_quantity) {
-        url += '&filter_quantity=' + filter_quantity;
-    }
-
-    var filter_status = $('#input-status').val();
-
-    if (filter_status !== '') {
-        url += '&filter_status=' + filter_status;
-    }
-
-    //added this to get category value
-    var filter_category = $('#input-category').val();
-
-    if (filter_category !== '') {
-        url += '&filter_category=' + encodeURIComponent(filter_category);
-    }
-    window.history.pushState({}, null, 'index.php?route=catalog/product&user_token={{ user_token }}' + url);
-
-    $('#product').load('index.php?route=catalog/product.list&user_token={{ user_token }}' + url);
+    $('#consignor').load('index.php?route=catalog/consignor.list&user_token={{ user_token }}' + url);
 });
 
-$('#input-name').autocomplete({
+$('#input-vendor').autocomplete({
     'source': function (request, response) {
         $.ajax({
             url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
@@ -136,47 +81,6 @@ $('#input-name').autocomplete({
     },
     'select': function (item) {
         $('#input-name').val(item['label']);
-    }
-});
-
-$('#input-model').autocomplete({
-    'source': function (request, response) {
-        $.ajax({
-            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_model=' + encodeURIComponent(request),
-            dataType: 'json',
-            success: function (json) {
-                response($.map(json, function (item) {
-                    return {
-                        label: item['model'],
-                        value: item['product_id']
-                    }
-                }));
-            }
-        });
-    },
-    'select': function (item) {
-        $('#input-model').val(item['label']);
-    }
-});
-
-//added this auto give out category when we type
-$('#input-category').autocomplete({
-    'source': function (request, response) {
-        $.ajax({
-            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_category=' + encodeURIComponent(request),
-            dataType: 'json',
-            success: function (json) {
-                response($.map(json, function (item) {
-                    return {
-                        label: item['category'],
-                        value: item['product_id']
-                    }
-                }));
-            }
-        });
-    },
-    'select': function (item) {
-        $('#input-category').val(item['label']);
     }
 });
 //--></script>
