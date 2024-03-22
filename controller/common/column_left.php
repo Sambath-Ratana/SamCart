@@ -304,7 +304,7 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			$consignor = [];
 			if ($this->user->hasPermission('access', 'catalog/consignee')) {
 				$consignor[] = [
-					'name'	   => $this->language->get('Consignors'),
+					'name'	   => $this->language->get('Consignees'),
 					'href'     => $this->url->link('catalog/consignee', 'user_token=' . $this->session->data['user_token']),
 					'children' => []
 				];
@@ -313,7 +313,7 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			$consignee = [];
 			if ($this->user->hasPermission('access', 'catalog/consignor')) {
 				$consignee[] = [
-					'name'	   => $this->language->get('Consignees'),
+					'name'	   => $this->language->get('Consignors'),
 					'href'     => $this->url->link('catalog/consignor', 'user_token=' . $this->session->data['user_token']),
 					'children' => []
 				];
