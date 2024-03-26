@@ -319,14 +319,14 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				];
 			}
 			// Potential problem with permission consignor/consignee accessing their counterparts
-			if ($this->user->hasPermission('access', 'sale/order')) {
+			if ($this->user->hasPermission('access', 'catalog/consignee')) {
 				$consignment[] = [
 					'name'	   => $this->language->get('text_consignor'),
 					'href'     => '',
 					'children' => $consignee
 				];
 			}
-			if ($this->user->hasPermission('access', 'sale/order')) {
+			if ($this->user->hasPermission('access', 'catalog/consignor')) {
 				$consignment[] = [
 					'name'	   => $this->language->get('text_consignee'),
 					'href'     => '',
